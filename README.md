@@ -383,17 +383,80 @@ STEP 9 (Configuring DNS): <br/>
 <p align="center">Now I can ping PC2 by typing its precise name rather than its IP address. This is more convenient and easier for humans to remember. I ran the "PING PC2" command, and all of the pings got through. The DNS request was successful.</p>
 
 
+<hr width="100%" size="2">
+
+<br />
+
+<p align="center"> 
+STEP 10 (Configuring Wireless Access Point (AP)): <br/>
+<img src="https://i.imgur.com/whvt7K6.png" height="70%" width="70%"/> </p>
 
 
+<p align="center">I accessed the settings and configured the Access Point, which is located in ROOM 1. The access point will connect the network wirelessly to the laptop, which is also located in ROOM 1. This will allow the laptop to receive an IP address from the ROOM 1 subnet.
+As you can see, I've given the wireless network an SSID name of "Room1 WiFi" and chosen "WPA2-PSK" as the authentication method, which is highly secure. The password for connecting to the WiFi will be "OfficeWiFi."</p>
 
 
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/PU1y8Pp.png" height="40%" width="40%"/> </p>
 
 
+<p align="center">To access the laptop's WiFi settings, I had to click on the "PC WIRELESS" section. After viewing this section, I'll be able to connect to the WiFi.</p>
 
 
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/jtiQZzT.png" height="60%" width="60%"/> </p>
 
 
+<p align="center">I was able to access this page after clicking "PC WIRELESS". As you can see, there is currently no connection to any wireless network, which is why the page displays the error "NO ASSOCIATION WITH ACCESS POINT".</p>
 
+
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/w46EfYR.png" height="60%" width="60%"/> </p>
+
+
+<p align="center">I'm in the "CONNECT" section, where I can see all of the WiFi connections available near my laptop. As you can see, the WiFi with the name "ROOM1 WIFI" is displayed, therefore I proceed with the connection.</p>
+
+
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/5BLOSe6.png" height="90%" width="90%"/> </p>
+
+
+<p align="center">After clicking on the WiFi name, I am prompted to input a password in the "PRE-SHARED KEY" box. I input the password for the WiFi network, which is "OfficeWiFi".</p>
+
+
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/MwGdtV0.png" height="50%" width="50%"/> </p>
+
+
+<p align="center">As you can see, I have successfully connected to the network via WiFi. Now it says "YOU HAVE SUCCESSFULLY CONNECTED TO THE ACCESS POINT".</p>
+
+
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/V9gK2eJ.png" height="40%" width="40%"/> </p>
+
+
+<p align="center">I'm currently on the laptop's "command prompt". As you can see, even without using the "IPCONFIG /RENEW" command, the DHCP server provided the laptop an IP address. It was assigned the IP address 192.168.1.2, which is for the ROOM 1 subnet. Now, the laptop is able to communicate with both internal and external clients over WiFi. </p>
+
+<p align="center">This was the final step for this project. All of the devices can interact with one another and send requests to the DHCP and DNS servers, both of which successfully respond to clients.
+</p>
 
 
 

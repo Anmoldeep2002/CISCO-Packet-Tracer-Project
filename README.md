@@ -172,26 +172,215 @@ STEP 5 (MANUALLY ASSIGNING IP ADDRESSES ON ROUTER): <br/>
 
 
 
+<hr width="100%" size="2">
+
+<br />
+
+<p align="center"> 
+STEP 5 (MANUALLY ASSIGNING IP ADDRESSES ON ROUTER (PART 2)): <br/>
+<img src="https://i.imgur.com/cITIY6n.png" height="70%" width="70%"/> </p>
+
+
+<p align="center">In the diagram, I've assigned the IP address range for the router-to-server link. The server is in a separate room, therefore it will be on a different subnet. Both the router and the server will be on the subnet 200.0.0.0.</p>
+
+
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/UxHVPYz.png" height="70%" width="70%"/> </p>
+
+
+<p align="center">I've assigned an IP address to the interface "GIG0/2" that is facing the server. I've assigned the IP address of "200.0.0.2" and the subnet mask "255.255.255.252".</p>
+
+
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/NkvE2Bf.png" height="70%" width="70%"/> </p>
+
+
+<p align="center">I've used the command "SHOW IP INTERFACE BRIEF" to confirm that the interface "GIG0/2" has been given the correct IP address.</p>
+
+
+<hr width="100%" size="2">
+
+<br />
+
+<p align="center"> 
+STEP 6 (ASSIGNING IP ADDRESS TO SERVER): <br/>
+<img src="https://i.imgur.com/bStHcC2.png" height="70%" width="70%"/> </p>
+
+
+<p align="center">I proceeded to the server configuration mode, and the procedure of giving IP addresses to clients and servers is a little different because this is a "Simulating Software". For the server, I've assigned an IP address of 200.0.0.1 and a subnet mask of "255.255.255.252". I've also set a default gateway with the IP address "200.0.0.1" for the router's "GIG0/2" interface.</p>
+
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/q1v6EDI.png" height="70%" width="70%"/> </p>
+
+
+<p align="center">I'm on the server's "Command Prompt" and have used the "IPCONFIG" command to check if the IP address has been configured. The IP address was successfully set.</p>
+
+
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/isYQ4K5.png" height="70%" width="70%"/> </p>
+
+
+<p align="center">I pinged the router interface that was facing the server. I've used the "PING" command to ping the IP address 200.0.0.2. The pings were successful, indicating that the server can reach transmit data to the router.</p>
+
+<hr width="100%" size="2">
+
+<br />
+
+<p align="center"> 
+STEP 7 (CONFIGURING DHCP): <br/>
+<img src="https://i.imgur.com/cDRQI1y.png" height="70%" width="70%"/> </p>
+
+
+<p align="center">Here, I've accessed the server's DHCP settings. As you can see, I have plenty of choices for configuring a DHCP pool, including adding a custom pool name, a range of IP addresses, and the number of clients who can obtain an IP address. I've also enabled the DHCP server by selecting "Service ON".</p>
+
+
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/jokbX1P.png" height="70%" width="70%"/> </p>
+
+
+<p align="center">Here, I've set up a DHCP pool for ROOM 1. I named the pool "Subnet 1" to make it clear that it is for ROOM 1. I assigned the pool a range of 10 IP addresses for clients. The pool will begin with the IP address 192.168.1.1 and end with 192.168.1.10. I've set the default gateway to the router's G0/0 interface, which means that all clients in ROOM 1 will be automatically issued this default gateway, as well as a random IP address and the DNS server.</p>
+
+
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/rk2zgjV.png" height="70%" width="70%"/> </p>
+
+
+<p align="center">Here, I've set up a DHCP pool for ROOM 2. I titled the pool "Subnet 2" to make it clear that it is for ROOM 2. I assigned the pool a range of 10 IP addresses for clients. The pool will begin with the IP address 192.168.2.1 and end with 192.168.2.10. I've set the default gateway to the router's G0/1 interface, which means that all clients in ROOM 2 will be automatically given this default gateway, as well as a random IP address and the DNS server.</p>
 
 
 
+<hr width="100%" size="2">
+
+<br />
+
+<p align="center"> 
+STEP 8 (CONFIGURING DHCP RELAY): <br/>
+<img src="https://i.imgur.com/OPtyqUb.png" height="50%" width="50%"/> </p>
 
 
+<p align="center">I'm currently at the "command prompt" of PC1, which is in Room 2's network. As you can see, I used the "ipconfig" command to check whether the client has received IP address from the DCHP server. It has not yet been assigned an IP address.</p>
 
 
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/gqmV5PR.png" height="70%" width="70%"/> </p>
 
 
+<p align="center">I attempted to obtain an IP address from the DHCP server, but it failed to assign one. I used the "IPCONFIG /RENEW" command, which lets devices obtain IP addresses from the server. The error message displayed was "DHCP REQUEST FAILED".</p>
 
 
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/VE7biR8.png" height="70%" width="70%"/> </p>
 
 
+<p align="center">Here I'm attempting to resolve the previous issue in which the client in ROOM 2 was not being allocated an IP address by the DHCP server. To resolve this issue, I had to go to the router's CLI and configure it from there. I had to access the G0/1 interface, which serves as the default gateway for ROOM 2. Once accessed, I had to use the "IP HELPER-ADDRESS" command, which is very useful since it allows the router to forward "DHCP REQUEST" messages from clients to the server. It will send the messages to the DHCP server's IP address, 200.0.0.1.</p>
 
 
+<hr width="100%" size="2">
+
+<br />
+
+<p align="center"> 
+STEP 9 (Configuring IP address for PC's): <br/>
+<img src="https://i.imgur.com/ytrntUs.png" height="70%" width="70%"/> </p>
 
 
+<p align="center">I'm back on PC 1 and I tried again to request an IP address using the "IPCONFIG /RENEW" command. As you can see, the IP request was successful, and the DHCP server assigned an IP address to PC1. The assigned IP address is 192.168.2.1.</p>
 
 
+<br />
+<br />
 
+<p align="center"> 
+<img src="https://i.imgur.com/qFGEXom.png" height="70%" width="70%"/> </p>
+
+
+<p align="center">I'm on PC 2 and I tried again to get an IP address using the "IPCONFIG /RENEW" command. As you can see, the IP request was successful, and the DHCP server assigned an IP address to PC2. The assigned IP address is 192.168.2.2.</p>
+
+
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/G47Tiqt.png" height="70%" width="70%"/> </p>
+
+
+<p align="center">Here, I'm pinging ROOM 2's default gateway from PC1. As you can see, the pings were successful, and there is full connectivity between the clients and the router.</p>
+
+
+<hr width="100%" size="2">
+
+<br />
+
+<p align="center"> 
+STEP 9 (Configuring DNS): <br/>
+<img src="https://i.imgur.com/emswEgx.png" height="70%" width="70%"/> </p>
+
+
+<p align="center">Here, I accessed the server's DNS services. Both DCHP and DNS are configured on a single server, allowing me to control both operations from a single device. As you can see, I've enabled DNS services, which will allow me to assign IP addresses to names that are easy to read. In this scenario, I will assign names to the clients' IP addresses from ROOM 2. This allows other clients to ping them simply by inputting the device's name rather than its IP address.</p>
+
+
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/VXDRd6b.png" height="70%" width="70%"/> </p>
+
+
+<p align="center">As you can see, I've assigned the name "PC1" to pc1's IP address using the DNS server. This allows other clients to ping this specific device by just typing "PING PC1" from the "command prompt". IP address 192.168.2.2 now goes under the name "PC1".</p>
+
+
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/q8dm2sE.png" height="70%" width="70%"/> </p>
+
+
+<p align="center">I've assigned the name "PC2" to PC2's IP address from the DNS server. This allows other clients to ping this specific device by just typing "PING PC2" from the "command prompt". IP address 192.168.2.1 now goes by the name "PC2".</p>
+
+
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/gPAu8GK.png" height="50%" width="50%"/> </p>
+
+
+<p align="center">Now I can ping PC1 by typing its precise name rather than its IP address. This is more convenient and easier for humans to remember. I ran the "PING PC1" command, and all of the pings got through. The DNS request was successful.</p>
+
+
+<br />
+<br />
+
+<p align="center"> 
+<img src="https://i.imgur.com/6Cp0Hx2.png" height="50%" width="50%"/> </p>
+
+
+<p align="center">Now I can ping PC2 by typing its precise name rather than its IP address. This is more convenient and easier for humans to remember. I ran the "PING PC2" command, and all of the pings got through. The DNS request was successful.</p>
 
 
 
